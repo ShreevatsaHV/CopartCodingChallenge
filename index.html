@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="PhoneAutoCorrect.js"></script>
+	<title>Contact</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+</head>
+<body>
+<label for="phone">Phone no:</label>
+<input id="phone"/>
+<script>
+$('#phone').keyup(function(){
+        var val = this.value;//.replace(/\D/g, '');
+        var newVal = '';
+        if(val.length == 0){
+        	alert("Please enter");
+        }
+        if(val.length <13){
+          if(val.length == 1) {
+            val = '('+val;
+            }
+            if(val.length == 4) {
+            val = val+')';
+            }
+            var lastChar = val[val.length -1];
+            if(val.length == 8 ) {
+            val = val+'-';
+            }else if(val.length == 9 && lastChar=='-'){
+            val = val.substr(0, 8);
+            }
+            
+          }else
+          alert("Invalid Phone number");
+          this.value = val;
+    });
+
+
+</script>
+</body>
+</html>
